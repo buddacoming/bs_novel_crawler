@@ -1,6 +1,6 @@
 ---
 name: novel-crawler
-description: 一个多功能小说抓取工具，支持半夏小说、52书库、256文学、孙指南/醋溜儿和思兔网。当用户请求下载、抓取小说或提供这些网站的链接时触发。
+description: 一个多功能小说抓取工具，支持半夏小说繁体站和简体站、52书库、256文学、孙指南/醋溜儿和思兔网。当用户请求下载、抓取小说或提供这些网站的链接时触发。
 ---
 
 # Novel Crawler Skill
@@ -9,15 +9,16 @@ description: 一个多功能小说抓取工具，支持半夏小说、52书库�
 
 ## 支持的网站
 
-- 半夏小说 (xbanxia.cc)
-- 52书库 (52shuku.net/vip)
-- 256文学 (256wx.org/net)
-- 孙指南/醋溜儿 (sunzhinan.com/culiu.cc)
-- 思兔网 (sto520.com/situ)
+- 半夏小说繁体站 ([xbanxia.cc](https://www.xbanxia.cc/)) 和简体站 ([banx.la](https://www.banx.la/))
+- 52书库 ([52shuku.net](https://www.52shuku.net/vip))
+- 256文学 ([256wx.org](https://www.256wx.org/net))
+- 孙指南/醋溜儿 ([sunzhinan.com](https://www.sunzhinan.com/) / [culiu.cc](https://www.culiu.cc/))
+- 思兔网 ([sto520.com](https://www.sto520.com/)，站点别名：situ)
 
 ## 使用方法
 
-1. **自动抓取**: 直接向 Gemini 提供小说主页 URL，例如：
-   "帮我抓取这部小说: https://www.xbanxia.cc/books/187646.html"
+1. **自动抓取**: 直接向 Gemini 提供小说主页链接，例如：
+   "帮我抓取这部小说: [半夏繁体站示例](https://www.xbanxia.cc/books/187646.html)"
+   半夏简体站请从 [banx.la](https://www.banx.la/) 打开目标小说主页，再将该页面链接发给 Gemini。
 
 2. **触发逻辑**: Gemini 会调用 `main.py [URL]`。脚本会自动识别网站并启动对应的爬虫。

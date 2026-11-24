@@ -22,7 +22,7 @@ def main():
     print(f"正在识别网址: {url} ...")
 
     try:
-        if 'banxia' in domain:
+        if 'banxia' in domain or domain == 'banx.la' or domain.endswith('.banx.la'):
             print("检测到: 半夏小说 (parsers.novel_banxia)")
             novel_banxia.main()
             
@@ -44,7 +44,7 @@ def main():
             
         else:
             print(f"抱歉，目前暂不支持该域名: {domain}")
-            print("支持的站点包括: 半夏小说 (xbanxia), 52书库 (52shuku), 256文学 (256wx), 孙指南/醋溜儿 (sunzhinan/culiu), 思兔网 (situ/sto)")
+            print("支持的站点包括: 半夏小说 (xbanxia.cc/banx.la), 52书库 (52shuku), 256文学 (256wx), 孙指南/醋溜儿 (sunzhinan/culiu), 思兔网 (situ/sto)")
 
     except Exception as e:
         print(f"\n[程序运行出错] {e}")
