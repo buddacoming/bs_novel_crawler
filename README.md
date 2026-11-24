@@ -31,8 +31,10 @@ python3 main.py "<小说主页URL>"
 
 **半夏简体站示例：** 先打开 [banx.la](https://www.banx.la/) 并进入要抓取的小说主页，再将该页面链接传给程序：
 
+小说主页示例：[banx.la 小说详情页](https://www.banx.la/book/3h6mc3ib4nrMHpcl1nr8pC)
+
 ```bash
-python3 main.py "<从 banx.la 复制的小说主页链接>"
+python main.py https://www.banx.la/book/3h6mc3ib4nrMHpcl1nr8pC
 ```
 
 半夏繁体站也可使用同样的方式，例如访问 [xbanxia.cc](https://www.xbanxia.cc/) 并传入站内小说主页链接。
@@ -43,7 +45,7 @@ python3 main.py "<从 banx.la 复制的小说主页链接>"
 
 > 帮我下载这部小说：[打开 banx.la 并复制小说主页链接](https://www.banx.la/)
 
-抓取结果默认合并保存为 `.txt` 文件，输出到 `~/Downloads/`。
+抓取结果默认合并保存为 `.txt` 文件，输出到运行命令时当前目录下的 `Downloads/`（目录不存在时会自动创建）。半夏每章抓取后等待 10 秒再抓取下一章；如果未找到章节链接或正文，程序会提示错误且不生成空文件。
 
 ## 🧩 项目结构
 

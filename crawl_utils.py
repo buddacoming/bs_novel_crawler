@@ -87,11 +87,29 @@ class Timer:
         mins, secs = divmod(seconds, 60)
         return f"{int(mins)}分{int(secs)}秒"
 
+def get_output_path(book_name, author, save_path=None):
+    """Resolve the destination for a novel text file."""
+    if save_path is None:
+        clean_name = re.sub(r'[\\/:*?"<>|]', '_', f"{book_name}-{author}")
+        return os.path.join(os.getcwd(), "Downloads", f"{clean_name}.txt")
+    return os.fspath(save_path)
+
+def append_to_file(save_path, text, overwrite=False):
+    """Persist one chapter immediately."""
+    os.makedirs(os.path.dirname(os.path.abspath(save_path)), exist_ok=True)
+    mode = "w" if overwrite else "a"
+    with open(save_path, mode, encoding="utf-8") as file:
+        file.write(text)
+        if not text.endswith("\n"):
+            file.write("\n")
+
 def save_to_file(book_name, author, page_text_dict, timer=None, save_path=None):
     """通用的保存逻辑"""
-    if not save_path:
-        clean_name = re.sub(r'[\\/:*?"<>|]', '_', f"{book_name}-{author}")
-        save_path = os.path.expanduser(f"~/Downloads/{clean_name}.txt")
+    save_path = get_output_path(book_name, author, save_path)
+
+    if not page_text_dict:
+        print("[错误] 没有抓取到章节内容，未生成文件。")
+        return
     
     count = len(page_text_dict)
     print(f"\n--- 抓取完成统计 ---")
@@ -104,6 +122,7 @@ def save_to_file(book_name, author, page_text_dict, timer=None, save_path=None):
         print(f"总计耗时: {timer.format_time(total_time)}")
     
     print(f"正在保存到: {save_path}")
+    os.makedirs(os.path.dirname(os.path.abspath(save_path)), exist_ok=True)
     with open(save_path, "w", encoding='utf-8') as f:
         for i in sorted(page_text_dict.keys()):
             f.write(page_text_dict[i])

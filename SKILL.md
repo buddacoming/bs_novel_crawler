@@ -19,6 +19,6 @@ description: 一个多功能小说抓取工具，支持半夏小说繁体站和�
 
 1. **自动抓取**: 直接向 Gemini 提供小说主页链接，例如：
    "帮我抓取这部小说: [半夏繁体站示例](https://www.xbanxia.cc/books/187646.html)"
-   半夏简体站请从 [banx.la](https://www.banx.la/) 打开目标小说主页，再将该页面链接发给 Gemini。
+   半夏简体站请从 [banx.la](https://www.banx.la/book/3h6mc3ib4nrMHpcl1nr8pC) 打开目标小说主页，再将该页面链接发给 Gemini。
 
 2. **触发逻辑**: Gemini 会调用 `main.py [URL]`。脚本会自动识别网站并启动对应的爬虫。
